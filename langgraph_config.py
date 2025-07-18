@@ -1,4 +1,4 @@
-from langgraph.graph import StateGraph
+from langgraph.graph import StateGraph, END
 
 # Import your Gemini-powered agent functions
 from agents.carbon_calc import carbon_calc_agent
@@ -24,6 +24,7 @@ def get_greenpath_graph():
     graph.add_edge("HealthAnalyzer", "EcoAdvisor")
     graph.add_edge("EcoAdvisor", "MentalWellness")
     graph.add_edge("MentalWellness", "GoalPlanner")
+    graph.add_edge("GoalPlanner", END)
 
     # Return compiled graph (usable in app.py and main.py)
     return graph.compile()
